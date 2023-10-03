@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{%block tit%}
+{{ title }}
+{%endblock%}
+
+{%block head%}
+<h2 style="color:whitesmoke">
+    Borrow Book
+</h2>
+{%endblock%}
+
+{%block content%}
+<form method="POST" style="color:whitesmoke">
+    {%csrf_token%}
+    {{ form }}
+    <input type="submit" class="btn" value="Borrow" style="color:whitesmoke">
+</form>
+<div style="color: {{ color }}">
+    {{ msg }}
+</div>
+{%endblock%}

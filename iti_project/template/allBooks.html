@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{%block tit%}
+{{ title }}
+{%endblock%}
+
+{%block head%}
+    All Books
+
+{%endblock%}
+
+{%block content%}
+<div class="row">
+    <div style="color: {{ color }}">
+        {{ msg }}
+    </div>
+    {%for b in books%}
+    <div class="col-sm-6 col-md-4 ">
+        <div class="box ">
+            <div class="img-box">
+                <img src="/static/assets/images/{{ b.photoName }}">
+            </div>
+            <div class="detail-box">
+                <h5 style="color: azure;">
+                    {{ b.name }}
+                </h5>
+                <p style="color:whitesmoke">
+                    {{ b.description }}
+                </p>
+                <p style="color: rgb(255, 255, 255)">
+                    {%if b.is_borrowed and request.session.is_admin %}
+                    Borrowed By: {{ b.borrowerName }}
+                    {%endif%}
+                </p>
+                {% if request.session.is_admin %}
+                <button type="button" class="btn"><a style="color: white"
+                        href="{%url 'updateBook' b.id %}">Update</a></button>
+                <button type="button" class="btn"><a style="color: white"
+                        href="{%url 'deleteBook' b.id %}">Delete</a></button>
+                {% elif request.session.id %}
+                    {%if b.is_borrowed %}
+                    <button type="button" class="btn disabled">Borrow</button>
+                    {%else%}
+                    <button type="button" class="btn"><a style="color: white"
+                        href="{%url 'borrowBook' b.id %}">Borrow</a></button>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}

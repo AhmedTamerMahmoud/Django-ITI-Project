@@ -1,0 +1,37 @@
+{%extends 'index.html'%}
+{%block tit%}
+Login
+{%endblock%}
+{%block head%}
+<div class="heading_container heading_center">
+    <h2 style="color: whitesmoke;">
+        Login
+    </h2>
+</div>
+{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" action="{%url 'login'%}">
+                {%csrf_token%}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            {%if msg and color%}
+            <!-- <div style="color: {{ color }}"> -->
+                {{ msg }}
+            </div>
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}

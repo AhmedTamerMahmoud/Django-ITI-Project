@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{%block tit%}
+Update Profile
+{%endblock%}
+
+{%block head%}
+<h2 style="color:whitesmoke">
+    Student Profile
+</h2>
+{%endblock%}
+
+{%block content%}
+<form method="POST" style="color:whitesmoke">
+{%csrf_token%}
+{{ form }}
+<input type="submit" class="btn" value="Update">
+</form>
+<div style="color: {{ color }}">
+    {{ msg }}
+</div>
+
+{%endblock%}

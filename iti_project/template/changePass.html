@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{%block tit%}
+    Change Own Password
+{%endblock%}
+
+{%block head%}
+{%if request.session.is_admin %}
+<h2 style="color:whitesmoke">
+    Change Password
+</h2>
+{%else%}
+<h2 style="color: red;">
+    ACCESS DENIED
+</h2>
+{%endif%}
+{%endblock%}
+
+{%block content%}
+{%if request.session.is_admin %}
+<form method="POST" action="{%url 'changePass'%}">
+    {%csrf_token%}
+    {{ form }}
+    <label>Confirm Password:</label>
+    <input type="password" name="newPass2" class="form-control" maxlength="50" required>
+    <label>Current Password:</label>
+    <input type="password" name="currPass" class="form-control" maxlength="50" required>
+    <input type="submit" class="btn" value="Change">
+</form>
+<div style="color: {{ color }}">
+    {{ msg }}
+</div>
+{%endif%}
+{%endblock%}

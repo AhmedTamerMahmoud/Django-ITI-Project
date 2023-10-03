@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{%block tit%}
+{{ title }}
+{%endblock%}
+
+{%block head%}
+{%if request.session.is_admin %}
+<h2 style="color:whitesmoke">
+    {{ operation }} Book
+</h2>
+{%else%}
+<h2 style="color: red;">
+    ACCESS DENIED
+</h2>
+{%endif%}
+{%endblock%}
+
+{%block content%}
+{%if request.session.is_admin %}
+<form method="POST">
+    {%csrf_token%}
+    {{ form }}
+    <input type="submit" class="btn" value="{{ operation }}">
+</form>
+<div style="color: {{ color }}">
+    {{ msg }}
+</div>
+{%endif%}
+{%endblock%}
