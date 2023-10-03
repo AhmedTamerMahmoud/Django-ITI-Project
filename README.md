@@ -1,2 +1,2 @@
-# Django-ITI-Project
-The final project of 1 month of Django framework summer training for a library website with (register, login, admin, and borrow books) functionalities)
+#Django Library Management System
+This project represents the final outcome of a one-month Django framework summer training program. It involves the development of a comprehensive library management system with core functionalities, including user registration, login, administrative capabilities, database management(postgresql), and book borrowing features.
